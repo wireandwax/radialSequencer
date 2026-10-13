@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spatial Music A</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #06070a;
+  color: #e5e7eb;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.35);
+  background: #090b0f;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.readouts {
+  display: flex;
+  gap: 24px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.readouts span {
+  color: #34d399;
+  font-variant-numeric: tabular-nums;
+}
+
+main {
+  position: relative;
+  height: calc(100vh - 54px);
+  min-height: 0;
+}
+
+.radar {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #06070a;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+}
+
+.controls {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 10;
+  padding: 14px;
+  background: rgba(9, 11, 15, 0.9);
+  border: 1px solid rgba(51, 65, 85, 0.4);
+  border-radius: 6px;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.control-group label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.control-group label span {
+  color: #e5e7eb;
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+.instructions {
+  font-size: 10px;
+  line-height: 1.5;
+  color: #64748b;
+  padding-top: 4px;
+  border-top: 1px solid rgba(51, 65, 85, 0.3);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <h1></h1>
+
+  <div class="readouts">
+    <div>
+      FPS <span id="fpsDisplay">0</span>
+    </div>
+
+    <div>
+      TARGETS <span id="targetDisplay">0</span>
+    </div>
+  </div>
+
+</header>
+
+
+<main>
+
+<section class="radar">
+  <canvas id="radarCanvas"></canvas>
+</section>
+
+
+<aside class="controls">
+
+  <div class="control-group">
+
+    <label>
+      Sweep Speed
+      <span id="speedValue">0.025</span>
+    </label>
+
+    <input
+      id="speedControl"
+      type="range"
+      min="0.005"
+      max="0.08"
+      step="0.005"
+      value="0.025"
+    >
+
+  </div>
+
+   <div class="control-group">
+
+    <label>
+      Metronome
+      <span id="">0.025</span>
+    </label>
+
+    <input
+      id="metronome"
+      type="checkbox"
+      checked
+    >
+
+  </div>
+
+
+  <div class="instructions">
+    Left click = add target<br>
+    Right mouse + drag = orbit view<br>
+    Space = pause / resume sweep<br>
+    Return = reset<br>
+    Click + Z = 8 beats<br>
+    Click + X = 16 beats<br>
+    Click + C = 32 beats
+  </div>
+
+</aside>
+
+</main>
+
+<script type="module" src="./js/main.js"></script>
+
+</body>
+</html>
+```
